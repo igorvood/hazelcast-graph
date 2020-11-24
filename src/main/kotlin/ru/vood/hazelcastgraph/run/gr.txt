@@ -1,0 +1,19 @@
+digraph DAG {
+	"trade-source" [localParallelism=1];
+	"sliding-window-prepare" [localParallelism=4];
+	"sliding-window" [localParallelism=4];
+	"sliding-window-2-prepare" [localParallelism=4];
+	"sliding-window-2" [localParallelism=1];
+	"map" [localParallelism=4];
+	"loggerSink" [localParallelism=1];
+	"trade-source" -> "sliding-window-prepare" [label="partitioned", queueSize=1024];
+	subgraph cluster_0 {
+		"sliding-window-prepare" -> "sliding-window" [label="distributed-partitioned", queueSize=1024];
+	}
+	"sliding-window" -> "sliding-window-2-prepare" [queueSize=1024];
+	subgraph cluster_1 {
+		"sliding-window-2-prepare" -> "sliding-window-2" [label="distributed-partitioned", queueSize=1024];
+	}
+	"sliding-window-2" -> "map" [queueSize=1024];
+	"map" -> "loggerSink" [queueSize=1024];
+}

@@ -24,10 +24,21 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.hazelcast.jet.contrib</groupId>
+            <artifactId>hazelcast-jet-spring-boot-starter</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.boot</groupId>-->
 <!--            <artifactId>spring-boot-starter-data-jdbc</artifactId>-->
 <!--        </dependency>-->
+        <dependency>
+            <groupId>com.hazelcast.jet.examples</groupId>
+            <artifactId>hazelcast-jet-examples-trade-source</artifactId>
+            <version>4.3</version>
+        </dependency>
 
         <dependency>
             <groupId>com.hazelcast</groupId>
